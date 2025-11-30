@@ -6,15 +6,15 @@ export const connect = async () => {
     await mongoose.connect("mongodb://127.0.0.1:27017/User");
     console.log("Mongodb Connected on port 27017");
     const admin: IUser | null = await User.findOne({
-      name: process.env.first_Admin_name || "Hello WOrld",
+      name: String(process.env.first_Admin_name),
     });
     if (admin) {
       return;
     }
     await User.create({
-      name: process.env.first_Admin_name || "Hello WOrld",
-      password: process.env.first_Admin_Password || "Hello WOrld",
-      email: process.env.first_Admin_email || "Hello WOrld",
+      name: String(process.env.first_Admin_name),
+      password: String(process.env.first_Admin_Password),
+      email: String(process.env.first_Admin_email),
       role: "admin",
     });
     return;
