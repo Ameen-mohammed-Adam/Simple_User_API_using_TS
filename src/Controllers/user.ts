@@ -1,4 +1,4 @@
-import { IUser, User } from "../models/UserSchema";
+import { User } from "../models/UserSchema";
 import { AppError } from "../utils/AppError";
 import { catchAsync } from "../utils/catchAsycn";
 export const CreateUser = catchAsync(async (req, res, next) => {
@@ -13,12 +13,9 @@ export const CreateUser = catchAsync(async (req, res, next) => {
 });
 
 export const getUserData = catchAsync(async (req, res, next) => {
-  const { email } = req.body || {};
-  const user: IUser | null = await User.findOne({ email });
+  const user = res.locals.user;
   if (!user) {
     return next(new AppError("User not found", 404));
   }
   res.status(200).json({ status: "success", data: user });
 });
-
-export const AdminDeleteUser = catchAsync(async (req, res, next) => {});
