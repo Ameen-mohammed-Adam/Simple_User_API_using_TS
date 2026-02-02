@@ -17,6 +17,7 @@
     "@types/bcrypt": "^6.0.0",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^9.0.10",
+    "axios": "^1.13.4",
     "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
